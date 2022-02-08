@@ -38,21 +38,21 @@ func addTwoNumbers(a, b []int) []int {
 func addTwoNumbersFirstSmall(a, b []int) []int {
 	sumResult := make([]int, 0)
 
-	var idx, sum, remainder, carry int
+	var idx, sum, digit, carry int
 
 	for idx < len(a) || idx < len(b) {
 		if idx < len(a) { // if idx is still in the range of a
 			sum = a[idx] + b[idx]
-			remainder = (sum + carry) % 10
+			digit = (sum + carry) % 10
 		} else { // if idx is in the range of b
 			sum = b[idx] + carry
-			remainder = sum % 10
+			digit = sum % 10
 		}
 
-		sumResult = append(sumResult, remainder)
+		sumResult = append(sumResult, digit)
 
 		// finding carry for the next iteration
-		sumRemainderDiff := sum - remainder
+		sumRemainderDiff := sum - digit
 		if sumRemainderDiff > 10 {
 			carry = sum % 10
 		} else if sumRemainderDiff == 10 {

@@ -45,18 +45,29 @@ func removeDuplicates(nums []int) int {
 		}
 	}
 
-	i, j := 0, 1
+	writerPointer := 1
 
-	for j < len(nums) {
-		//      i    j
-		//      v    v
-		// eg. [1,1,2]
-		if nums[j] != nums[i] {
-			i++ // increment i and swap the values
-			nums[i] = nums[j]
+	for readerPointer := 1; readerPointer < len(nums); readerPointer++ {
+		if nums[readerPointer] != nums[readerPointer-1] {
+			nums[writerPointer] = nums[readerPointer]
+			writerPointer++
 		}
-		j++ // keep looking for a new value not equal to the value at index i
 	}
 
-	return i + 1
+	return writerPointer
+
+	// i, j := 0, 1
+
+	// for j < len(nums) {
+	// 	//      i    j
+	// 	//      v    v
+	// 	// eg. [1,1,2]
+	// 	if nums[j] != nums[i] {
+	// 		i++ // increment i and swap the values
+	// 		nums[i] = nums[j]
+	// 	}
+	// 	j++ // keep looking for a new value not equal to the value at index i
+	// }
+
+	// return i + 1
 }

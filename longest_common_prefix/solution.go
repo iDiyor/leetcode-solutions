@@ -1,5 +1,7 @@
 package longestcommonprefix
 
+import "strings"
+
 /*
 Write a function to find the longest common prefix string amongst an array of strings.
 
@@ -71,4 +73,20 @@ func contains(num int, nums []int) bool {
 		}
 	}
 	return false
+}
+
+func longestCommonPrefix2(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	prefix := strs[0]
+
+	for i := 1; i < len(strs); i++ {
+		for !strings.Contains(strs[i], prefix) {
+			prefix = prefix[0 : len(prefix)-1]
+		}
+	}
+
+	return prefix
 }

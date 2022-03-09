@@ -1,0 +1,3 @@
+package intersectionoftwolinkedlist
+
+// linkedlist

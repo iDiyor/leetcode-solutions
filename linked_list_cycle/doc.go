@@ -1,0 +1,3 @@
+package linkedlistcycle
+
+// linkedlist

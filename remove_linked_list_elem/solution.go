@@ -43,5 +43,40 @@ func removeElements(head *ListNode, val int) *ListNode {
 		return nil
 	}
 
-	return nil
+	var prev *ListNode
+	curr := head
+
+	valCount, nodeCount := 0, 0
+
+	for curr != nil {
+		if curr.Val == val {
+			valCount++
+		}
+		nodeCount++
+		curr = curr.Next
+	}
+
+	if valCount == nodeCount {
+		return nil
+	}
+
+	// skip vals from head
+	for head.Val == val {
+		head = head.Next
+	}
+
+	curr = head
+
+	for curr != nil {
+		if curr.Val == val {
+			if prev != nil {
+				prev.Next = curr.Next
+			}
+		} else {
+			prev = curr
+		}
+		curr = curr.Next
+	}
+
+	return head
 }

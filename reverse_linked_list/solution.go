@@ -47,9 +47,9 @@ func reverseList(head *ListNode) *ListNode {
 
 	for curr != nil {
 		next = curr.Next
+		curr.Next = prev
 		prev = curr
 		curr = next
-		curr.Next = prev
 	}
 
 	return prev
